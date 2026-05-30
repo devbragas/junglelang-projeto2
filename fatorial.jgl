@@ -1,0 +1,24 @@
+RUGIR "Digite um numero para calcular o fatorial:"
+CAÇAR entrada
+NASCER numero = int(entrada)
+
+NASCER resultado = 1
+NASCER um = 1
+
+ENQUANTO numero > 1
+    # Simula a multiplicacao usando um laco interno de somas
+    NASCER temp = resultado
+    NASCER copia_numero = numero
+    PERDER copia_numero copia_numero um
+    
+    ENQUANTO copia_numero > 0
+        MUTAR resultado resultado temp
+        PERDER copia_numero copia_numero um
+    FOME
+    
+    # Decrementa o numero principal
+    PERDER numero numero um
+FOME
+
+RUGIR "O fatorial selvagem desse numero eh:"
+RUGIR resultado
