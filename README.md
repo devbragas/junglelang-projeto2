@@ -1,10 +1,8 @@
-# jungle-lang-esolang
-Linguagem esotérica para fins acadêmicos jgl.
 # JungleLang (`.jgl`) 🐒🌴
 
 A **JungleLang** é uma linguagem de programação esotérica (Esolang) de propósito geral desenvolvida para programadores que decidiram largar a civilização e codificar como nativos da selva. 
 
-Este projeto foi desenvolvido como parte de uma atividade acadêmica de Linguagens de Programação e conta com a documentação completa, um tradutor automatizado para Python e três programas funcionais de demonstração.
+Este projeto conta com a documentação completa da sintaxe, um tradutor automatizado para Python e três programas funcionais de demonstração.
 
 ---
 
@@ -98,7 +96,6 @@ def traduzir(arquivo_jgl):
             nivel_indentacao += 1
             
         else:
-            # Mantém linhas que não correspondem a comandos mapeados (ex: funções nativas do Python utilizadas)
             codigo_python.append(f"{indent}{linha_limpa}")
 
     # Salva o arquivo traduzido para .py
