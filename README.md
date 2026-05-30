@@ -110,7 +110,7 @@ if __name__ == "__main__":
         print("Uso: python tradutor.py programa.jgl")
     else:
         traduzir(sys.argv[1])
----
+```
 
 ## 📝 3. Programas de Demonstração
 
