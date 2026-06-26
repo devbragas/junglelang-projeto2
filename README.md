@@ -28,15 +28,15 @@ O programa foi construído com uma lista de 20 animais e funciona como uma simul
 
 ### Comandos principais
 
-| Comando em JungleLang | Equivalente em Python | Descrição |
-| :--- | :--- | :--- |
-| `NASCER variavel = valor` | `variavel = valor` | Declara e inicializa uma variável. |
-| `RUGIR "texto" ou var` | `print("texto")` ou `print(var)` | Exibe algo na tela. |
-| `CAÇAR variavel` | `variavel = input()` | Lê uma entrada do teclado. |
-| `MUTAR var1 var2 var3` | `var1 = var2 + var3` | Soma dois valores. |
-| `PERDER var1 var2 var3` | `var1 = var2 - var3` | Subtrai dois valores. |
-| `ENQUANTO condicao` | `while condicao:` | Inicia um laço de repetição. |
-| `FOME` | fim do bloco | Encerra um bloco iniciado por `ENQUANTO`. |
+| Comando em JungleLang     | Equivalente em Python            | Descrição                                 |
+| :------------------------ | :------------------------------- | :---------------------------------------- |
+| `NASCER variavel = valor` | `variavel = valor`               | Declara e inicializa uma variável.        |
+| `RUGIR "texto" ou var`    | `print("texto")` ou `print(var)` | Exibe algo na tela.                       |
+| `CAÇAR variavel`          | `variavel = input()`             | Lê uma entrada do teclado.                |
+| `MUTAR var1 var2 var3`    | `var1 = var2 + var3`             | Soma dois valores.                        |
+| `PERDER var1 var2 var3`   | `var1 = var2 - var3`             | Subtrai dois valores.                     |
+| `ENQUANTO condicao`       | `while condicao:`                | Inicia um laço de repetição.              |
+| `FOME`                    | fim do bloco                     | Encerra um bloco iniciado por `ENQUANTO`. |
 
 ## Descrição do tradutor
 
@@ -107,11 +107,3 @@ Em seguida, o sistema mostra:
 
 - Python 3 instalado na máquina.
 - Terminal para executar os comandos.
-
-## Observação final
-
-O projeto tem foco didático. Ele demonstra:
-
-- como criar uma linguagem simples com comandos próprios;
-- como traduzir essa linguagem para Python;
-- como aplicar a linguagem em um tema educativo ligado à preservação ambiental.
