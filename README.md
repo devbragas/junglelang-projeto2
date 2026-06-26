@@ -55,7 +55,7 @@ Fluxo do tradutor:
 ### 1. Clonar o repositório
 
 ```bash
-git clone <URL_DO_REPOSITORIO>
+git clone <https://github.com/devbragas/junglelang-projeto2>
 ```
 
 ### 2. Entrar na pasta do projeto
