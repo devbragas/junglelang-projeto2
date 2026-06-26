@@ -1,6 +1,7 @@
 # JungleLang (`.jgl`)
 
-JungleLang é uma linguagem de programação esotérica criada para simular uma sintaxe inspirada na selva. O projeto inclui a documentação básica da linguagem, um tradutor de arquivos `.jgl` para Python e um programa de exemplo voltado para conscientização ambiental.
+JungleLang é uma linguagem de programação esotérica criada para simular uma sintaxe inspirada na selva. O projeto inclui a documentação básica da linguagem, um tradutor de arquivos `.jgl` para Python e um programa oqual identifica se uma espécie da floresta amazônica está ou não com perigo de extinção e o
+que fazer se encontrar um desses animais. Divirta-se!
 
 ## Descrição resumida do que o programa faz
 
