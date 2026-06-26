@@ -1,8 +1,0 @@
-NASCER qut = 99
-NASCER um = 1
-ENQUANTO qut > 0
-    RUGIR qut
-    RUGIR "garrafas de cerveja na selva!"
-    PERDER qut qut um
-FOME
-RUGIR "Fim do estoque!"

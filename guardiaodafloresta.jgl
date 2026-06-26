@@ -1,0 +1,174 @@
+RUGIR "============================================================"
+RUGIR "   RUGIR - O GUARDIÃO DA FLORESTA AMAZÔNICA   "
+RUGIR "============================================================"
+RUGIR "Você assumiu o posto de guarda-parques digital."
+RUGIR "Sua missão: identificar se a espécie avistada está"
+RUGIR "ameaçada de extinção e o que fazer ao encontrá-la."
+RUGIR " "
+RUGIR "Lista: ariranha, peixe-boi-da-amazonia, boto-cor-de-rosa, onca-pintada, uacari-branco, macaco-aranha, jacare-acu, anta, sauim-de-coleira, harpia, mutum-de-penacho, tatu-canastra, tamandua-bandeira, cuxiu-preto, gaviao-real, tracaja, pirarucu, jaguatirica, queixada, arara-azul-de-lear"
+RUGIR " "
+RUGIR "Digite o nome de um animal da lista acima:"
+
+CAÇAR entrada_animal
+NASCER animal = entrada_animal.strip().lower()
+
+NASCER especies = {
+    "ariranha": 1,
+    "peixe-boi-da-amazonia": 1,
+    "boto-cor-de-rosa": 1,
+    "onca-pintada": 1,
+    "uacari-branco": 1,
+    "macaco-aranha": 1,
+    "jacare-acu": 0,
+    "anta": 0,
+    "sauim-de-coleira": 1,
+    "harpia": 1,
+    "mutum-de-penacho": 1,
+    "tatu-canastra": 1,
+    "tamandua-bandeira": 1,
+    "cuxiu-preto": 1,
+    "gaviao-real": 1,
+    "tracaja": 1,
+    "pirarucu": 0,
+    "jaguatirica": 0,
+    "queixada": 0,
+    "arara-azul-de-lear": 1
+}
+
+NASCER nomes = {
+    "ariranha": "Ariranha",
+    "peixe-boi-da-amazonia": "Peixe-boi-da-Amazônia",
+    "boto-cor-de-rosa": "Boto-cor-de-rosa",
+    "onca-pintada": "Onça-pintada",
+    "uacari-branco": "Uacari-branco",
+    "macaco-aranha": "Macaco-aranha",
+    "jacare-acu": "Jacare-açu",
+    "anta": "Anta",
+    "sauim-de-coleira": "Sauim-de-coleira",
+    "harpia": "Harpia",
+    "mutum-de-penacho": "Mutum-de-penacho",
+    "tatu-canastra": "Tatu-canastra",
+    "tamandua-bandeira": "Tamanduá-bandeira",
+    "cuxiu-preto": "Cuxiú-preto",
+    "gaviao-real": "Gavião-real",
+    "tracaja": "Tracajá",
+    "pirarucu": "Pirarucu",
+    "jaguatirica": "Jaguatirica",
+    "queixada": "Queixada",
+    "arara-azul-de-lear": "Arara-azul-de-Lear"
+}
+
+NASCER sons = {
+    "ariranha": "Um assovio agudo corta o rio: a ariranha avisa o bando.",
+    "peixe-boi-da-amazonia": "Um borbulhar manso na água escura denuncia o gigante gentil.",
+    "boto-cor-de-rosa": "Um salto rosado quebra a superfície do rio sob o sol.",
+    "onca-pintada": "Um rosnado grave faz as folhas tremerem ao redor.",
+    "uacari-branco": "Uma sombra de pelagem clara passa veloz entre os galhos altos.",
+    "macaco-aranha": "Gritos agudos ecoam de copa em copa da mata.",
+    "jacare-acu": "Um par de olhos flutua quieto na superfície da lagoa.",
+    "anta": "Passos pesados e um resfolegar grave atravessam a trilha.",
+    "sauim-de-coleira": "Um chilrear fino denuncia o pequeno primata camuflado.",
+    "harpia": "Um bater de asas poderoso escurece o céu por um instante.",
+    "mutum-de-penacho": "Um grunhido grave sai do meio da folhagem densa.",
+    "tatu-canastra": "Um arranhar de garras escava a terra macia da clareira.",
+    "tamandua-bandeira": "Um andar lento e cauteloso se aproxima do formigueiro.",
+    "cuxiu-preto": "Um som rouco e baixo vem do alto das árvores escuras.",
+    "gaviao-real": "Um grito agudo anuncia a chegada do predador alado.",
+    "tracaja": "Um deslizar silencioso na lama leva o quelônio ao rio.",
+    "pirarucu": "Um respiro forte na superfície revela o gigante das águas.",
+    "jaguatirica": "Passos felinos e discretos cruzam a vegetação rasteira.",
+    "queixada": "Um bando inteiro avança fazendo a mata estalar.",
+    "arara-azul-de-lear": "Um grasnar metálico colore o céu de azul intenso."
+}
+
+NASCER acoes = {
+    "ariranha": "Mantenha distância, não alimente e avise órgãos ambientais como Ibama ou ICMBio.",
+    "peixe-boi-da-amazonia": "Não toque, não tente empurrar para a água e acione uma equipe de resgate especializada.",
+    "boto-cor-de-rosa": "Não ofereça comida, evite barcos muito próximos e informe autoridades ambientais.",
+    "onca-pintada": "Afaste-se com calma, não corra, proteja pessoas e acione imediatamente a vigilância ambiental.",
+    "uacari-branco": "Não tente capturar, reduza barulho e comunique pesquisadores ou fiscais da região.",
+    "macaco-aranha": "Não aproxime alimento humano, observe de longe e avise a gestão da unidade de conservação.",
+    "jacare-acu": "Mantenha distância segura, não provoque e preserve a área sem interferência.",
+    "anta": "Deixe uma rota de fuga livre, não encurrale e informe se houver ferimentos.",
+    "sauim-de-coleira": "Evite contato, não retire do habitat e acione um centro de fauna.",
+    "harpia": "Observe de longe, não se aproxime do ninho e informe órgãos ambientais.",
+    "mutum-de-penacho": "Não capture, evite desmatamento local e comunique equipes de conservação.",
+    "tatu-canastra": "Não bloqueie tocas, mantenha distância e informe registros a projetos de monitoramento.",
+    "tamandua-bandeira": "Não toque, afaste cães e pessoas e chame apoio ambiental se estiver ferido.",
+    "cuxiu-preto": "Reduza perturbações, não alimente e comunique agentes de preservação.",
+    "gaviao-real": "Proteja a área do ninho, evite ruído e informe autoridades competentes.",
+    "tracaja": "Não recolha ovos nem filhotes e acione programas locais de proteção de quelônios.",
+    "pirarucu": "Respeite períodos de manejo, não pesque irregularmente e informe a comunidade local.",
+    "jaguatirica": "Mantenha distância, não tente seguir o animal e evite qualquer captura.",
+    "queixada": "Afaste-se do grupo, não provoque e preserve corredores florestais.",
+    "arara-azul-de-lear": "Não se aproxime de paredões de nidificação, não alimente e avise o ICMBio."
+}
+
+NASCER selo = {
+    "ariranha": "** ESPÉCIE-CHAVE DOS RIOS AMAZÔNICOS **",
+    "peixe-boi-da-amazonia": "** GIGANTE PACÍFICO EM RISCO **",
+    "boto-cor-de-rosa": "** LENDA VIVA DO RIO **",
+    "onca-pintada": "** TOPO DA CADEIA ALIMENTAR **",
+    "uacari-branco": "** RARO E ENDÊMICO DA AMAZÔNIA **",
+    "macaco-aranha": "** ACROBATA DAS COPAS **",
+    "jacare-acu": "** SENTINELA DOS IGAPÓS **",
+    "anta": "** JARDINEIRA DA FLORESTA **",
+    "sauim-de-coleira": "** PEQUENO E VULNERÁVEL **",
+    "harpia": "** RAINHA DOS CÉUS AMAZÔNICOS **",
+    "mutum-de-penacho": "** AVE EMBLEMÁTICA DA MATA **",
+    "tatu-canastra": "** ENGENHEIRO DO SUBSOLO **",
+    "tamandua-bandeira": "** GUARDIÃO DOS FORMIGUEIROS **",
+    "cuxiu-preto": "** HABITANTE DAS COPAS ALTAS **",
+    "gaviao-real": "** PREDADOR DE ELITE **",
+    "tracaja": "** VIAJANTE DOS RIOS **",
+    "pirarucu": "** GIGANTE DAS ÁGUAS DOCES **",
+    "jaguatirica": "** CAÇADORA NOTURNA E DISCRETA **",
+    "queixada": "** ARQUITETA DOS CORREDORES VERDES **",
+    "arara-azul-de-lear": "** JOIA AZUL DO SERTÃO E DA MATA **"
+}
+
+NASCER encontrado = 0
+
+ENQUANTO animal in especies
+    NASCER encontrado = 1
+
+    RUGIR " "
+    RUGIR "------------------------------------------------------------"
+    RUGIR sons[animal]
+    RUGIR "Espécie identificada:"
+    RUGIR nomes[animal]
+    RUGIR selo[animal]
+
+    NASCER ameacado = especies[animal]
+
+    ENQUANTO ameacado > 0
+        RUGIR "Status: EM PERIGO DE EXTINÇÃO."
+        RUGIR "O Guardião da Floresta alerta: protocolo de segurança!"
+        RUGIR "O que fazer ao encontrar esse animal:"
+        RUGIR acoes[animal]
+        NASCER ameacado = 0
+    FOME
+
+    ENQUANTO especies[animal] == 0
+        RUGIR "Status: sem indicação de perigo imediato nesta lista."
+        RUGIR "Mesmo fora da lista de risco, a floresta agradece o cuidado:"
+        RUGIR acoes[animal]
+        NASCER especies[animal] = -1
+    FOME
+
+    RUGIR "------------------------------------------------------------"
+    NASCER animal = ""
+FOME
+
+ENQUANTO encontrado == 0
+    RUGIR " "
+    RUGIR "O Guardião não reconheceu esse rastro na floresta."
+    RUGIR "Animal não encontrado na lista do programa."
+    RUGIR "Digite exatamente como aparece na lista apresentada."
+    NASCER encontrado = 1
+FOME
+
+RUGIR " "
+RUGIR "============================================================"
+RUGIR "Consulta encerrada. A Amazônia agradece sua vigilância!"
+RUGIR "============================================================"

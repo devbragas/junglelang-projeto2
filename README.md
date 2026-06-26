@@ -1,113 +1,117 @@
-# JungleLang (`.jgl`) 🐒🌴
+# JungleLang (`.jgl`)
 
-A **JungleLang** é uma linguagem de programação esotérica (Esolang) de propósito geral desenvolvida para programadores que decidiram largar a civilização e codificar como nativos da selva. 
+JungleLang é uma linguagem de programação esotérica criada para simular uma sintaxe inspirada na selva. O projeto inclui a documentação básica da linguagem, um tradutor de arquivos `.jgl` para Python e um programa de exemplo voltado para conscientização ambiental.
 
-Este projeto conta com a documentação completa da sintaxe, um tradutor automatizado para Python e três programas funcionais de demonstração.
+## Descrição resumida do que o programa faz
 
----
+O programa `guardiaodafloresta.jgl` permite que o usuário digite o nome de um animal e receba:
 
-## 🗂️ 1. Documentação da Linguagem
+- a identificação da espécie;
+- um efeito narrativo com a "presença" do animal na floresta;
+- a informação se ele está em perigo de extinção ou não dentro da lista usada no projeto;
+- uma orientação sobre como agir ao encontrar esse animal.
 
-### Tipos Suportados
-* **Monstro (Inteiro):** Números inteiros (ex: `99`, `1`, `0`).
-* **Cipó (String):** Cadeias de caracteres delimitadas por aspas duplas (ex: `"Hello World!"`).
+O programa foi construído com uma lista de 20 animais e funciona como uma simulação educativa sobre preservação da fauna.
 
-### Tabela de Sintaxe e Comandos
+## Estrutura do projeto
+
+- `guardiaodafloresta.jgl`: programa principal em JungleLang.
+- `tradutor.py`: tradutor que converte arquivos `.jgl` em arquivos `.py`.
+- `README.md`: documentação do projeto.
+
+## Sintaxe básica da linguagem
+
+### Tipos suportados
+
+- `Monstro (Inteiro)`: números inteiros, como `0`, `1` e `99`.
+- `Cipó (String)`: textos entre aspas duplas, como `"Olá, floresta"`.
+
+### Comandos principais
 
 | Comando em JungleLang | Equivalente em Python | Descrição |
 | :--- | :--- | :--- |
 | `NASCER variavel = valor` | `variavel = valor` | Declara e inicializa uma variável. |
-| `RUGIR "texto" ou var` | `print("texto")` ou `print(var)` | Exibe algo na tela com quebra de linha. |
-| `CAÇAR variavel` | `variavel = input()` | Lê uma entrada de texto do teclado. |
-| `MUTAR var1 var2 var3` | `var1 = var2 + var3` | Soma dois valores e armazena no primeiro. |
-| `PERDER var1 var2 var3` | `var1 = var2 - var3` | Subtrai dois valores e armazena no primeiro. |
-| `ENQUANTO var1 > var2` | `while var1 > var2:` | Inicia um laço de repetição baseado em condição. |
-| `FOME` | *(Redução de indentação)* | Encerra o bloco de código do `ENQUANTO`. |
+| `RUGIR "texto" ou var` | `print("texto")` ou `print(var)` | Exibe algo na tela. |
+| `CAÇAR variavel` | `variavel = input()` | Lê uma entrada do teclado. |
+| `MUTAR var1 var2 var3` | `var1 = var2 + var3` | Soma dois valores. |
+| `PERDER var1 var2 var3` | `var1 = var2 - var3` | Subtrai dois valores. |
+| `ENQUANTO condicao` | `while condicao:` | Inicia um laço de repetição. |
+| `FOME` | fim do bloco | Encerra um bloco iniciado por `ENQUANTO`. |
 
----
+## Descrição do tradutor
 
-## 💻 2. Código do Tradutor (`tradutor.py`)
+O arquivo `tradutor.py` lê um programa escrito em JungleLang, converte cada comando para o equivalente em Python e gera automaticamente um novo arquivo `.py` pronto para execução.
 
-O tradutor foi desenvolvido em **Python**. Ele faz a análise linha por linha do arquivo `.jgl`, substitui os tokens pelos equivalentes em Python, gerencia o nível de indentação dos blocos e gera um arquivo `.py` pronto para execução.
+Fluxo do tradutor:
 
-```python
-import sys
+1. Lê o arquivo `.jgl`.
+2. Ignora linhas vazias e comentários.
+3. Traduz comandos como `RUGIR`, `CAÇAR`, `NASCER` e `ENQUANTO`.
+4. Ajusta a indentação dos blocos.
+5. Salva o resultado com a extensão `.py`.
 
-def traduzir(arquivo_jgl):
-    if not arquivo_jgl.endswith('.jgl'):
-        print("Erro: O arquivo de origem deve ter a extensão .jgl")
-        return
+## Passos necessários para execução do programa
 
-    try:
-        with open(arquivo_jgl, 'r', encoding='utf-8') as f:
-            linhas = f.readlines()
-    except FileNotFoundError:
-        print(f"Erro: Arquivo {arquivo_jgl} não encontrado.")
-        return
+### 1. Clonar o repositório
 
-    codigo_python = []
-    nivel_indentacao = 0
+```bash
+git clone <URL_DO_REPOSITORIO>
+```
 
-    for linha in linhas:
-        linha_limpa = linha.strip()
-        
-        # Ignora linhas vazias ou comentários
-        if not linha_limpa or linha_limpa.startswith('#'):
-            continue
-        
-        indent = "    " * nivel_indentacao
-        
-        # Comando: FOME (Fim de bloco)
-        if linha_limpa == "FOME":
-            nivel_indentacao = max(0, nivel_indentacao - 1)
-            continue
+### 2. Entrar na pasta do projeto
 
-        # Comando: NASCER (Declaração)
-        if linha_limpa.startswith("NASCER "):
-            partes = linha_limpa.replace("NASCER ", "", 1)
-            codigo_python.append(f"{indent}{partes}")
-            
-        # Comando: RUGIR (Print)
-        elif linha_limpa.startswith("RUGIR "):
-            conteudo = linha_limpa.replace("RUGIR ", "", 1)
-            codigo_python.append(f"{indent}print({conteudo})")
-            
-        # Comando: CAÇAR (Input)
-        elif linha_limpa.startswith("CAÇAR "):
-            var = linha_limpa.replace("CAÇAR ", "", 1)
-            codigo_python.append(f"{indent}{var} = input()")
-            
-        # Comando: MUTAR (Soma: MUTAR resultado valor1 valor2)
-        elif linha_limpa.startswith("MUTAR "):
-            partes = linha_limpa.split()
-            if len(partes) == 4:
-                codigo_python.append(f"{indent}{partes[1]} = {partes[2]} + {partes[3]}")
-                
-        # Comando: PERDER (Subtração: PERDER resultado valor1 valor2)
-        elif linha_limpa.startswith("PERDER "):
-            partes = linha_limpa.split()
-            if len(partes) == 4:
-                codigo_python.append(f"{indent}{partes[1]} = {partes[2]} - {partes[3]}")
-                
-        # Comando: ENQUANTO (While)
-        elif linha_limpa.startswith("ENQUANTO "):
-            condicao = linha_limpa.replace("ENQUANTO ", "", 1)
-            codigo_python.append(f"{indent}while {condicao}:")
-            nivel_indentacao += 1
-            
-        else:
-            codigo_python.append(f"{indent}{linha_limpa}")
+```bash
+cd jungle-dev/jungle-lang-esolang
+```
 
-    # Salva o arquivo traduzido para .py
-    arquivo_saida = arquivo_jgl.replace('.jgl', '.py')
-    with open(arquivo_saida, 'w', encoding='utf-8') as f:
-        f.write("\n".join(codigo_python))
-    
-    print(f"Sucesso! Arquivo traduzido gerado: {arquivo_saida}")
+### 3. Traduzir o arquivo JungleLang para Python
 
-if __name__ == "__main__":
-    if len(sys.argv) < 2:
+```bash
+python tradutor.py guardiaodafloresta.jgl
+```
 
-        print("Uso: python tradutor.py programa.jgl")
-    else:
-        traduzir(sys.argv[1])
+Esse comando gera o arquivo `guardiaodafloresta.py`.
+
+### 4. Executar o programa traduzido
+
+```bash
+python guardiaodafloresta.py
+```
+
+## Importante
+
+Arquivos `.jgl` não devem ser executados diretamente com Python. O comando abaixo gera erro:
+
+```bash
+python guardiaodafloresta.jgl
+```
+
+Isso acontece porque `RUGIR`, `NASCER`, `CAÇAR` e `ENQUANTO` são comandos da JungleLang, não comandos nativos do Python.
+
+## Exemplo de uso
+
+Ao executar o programa, o usuário informa um animal da lista, como:
+
+```text
+ariranha
+```
+
+Em seguida, o sistema mostra:
+
+- a espécie identificada;
+- uma descrição narrativa;
+- o status de conservação dentro da lista adotada;
+- a orientação de segurança e preservação.
+
+## Requisitos
+
+- Python 3 instalado na máquina.
+- Terminal para executar os comandos.
+
+## Observação final
+
+O projeto tem foco didático. Ele demonstra:
+
+- como criar uma linguagem simples com comandos próprios;
+- como traduzir essa linguagem para Python;
+- como aplicar a linguagem em um tema educativo ligado à preservação ambiental.
